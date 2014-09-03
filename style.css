@@ -6,8 +6,15 @@ h1{
 
 	font-family: arial, sans-serif;
 	font-size: 80px;
-font-weight: 100;
+	font-weight: 100;
 	letter-spacing: 16pt;
 	word-spacing: 17pt;
 	line-height: 1.7;
+}
+
+.work_description{
+	font-family: arial, sans-serif;
+	color: red;	
+
+
 }
