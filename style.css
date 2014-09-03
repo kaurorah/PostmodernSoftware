@@ -9,12 +9,18 @@ h1{
 	font-weight: 100;
 	letter-spacing: 16pt;
 	word-spacing: 17pt;
-	line-height: 1.7;
+}
+
+h2{
+	font-family: arial, sans-serif;
+	font-size: 60px;
+	font-weight: 100;
+	letter-spacing: 16pt;
+	word-spacing: 17pt;
 }
 
 .work_description{
-	font-family: arial, sans-serif;
-	color: red;	
-
-
+	font-family: helvetica, sans-serif;
+	font-size: 17px;
+	letter-spacing: 3pt;
 }
