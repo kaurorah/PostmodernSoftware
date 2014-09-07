@@ -1,0 +1,39 @@
+h1{
+	font-family: arial
+}
+body{
+	background-color: DarkGrey;
+    border: 1px solid black;
+        padding: 10px;
+
+}
+
+h2{
+	font-family: arial;
+}
+a:hover {
+  color: #FF6633 ;
+}
+
+img{
+	float: right;
+	border: 5px solid black;
+
+}
+.LifeProgress{
+	border:1px
+	float:right
+}
+
+.footer{
+	text-align: center;
+	border:1px;
+	background-color: #D9D9D1;
+	padding:15px;
+
+
+}
+
+.TopHeader{
+
+}
