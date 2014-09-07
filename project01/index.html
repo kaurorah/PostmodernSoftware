@@ -9,6 +9,7 @@
 	<p>Figuring out your life, so you don't have to...</p>
 
 	<!--TODO: menu items need to change color when hovered on by the mouse-->
+	<!--TODO: menu items need to have tooltips-->
 	<a href="#" onclick="return false;">Home</a>
 	<a href="#" onclick="return false;">Interests</a>
 	<a href="#" onclick="return false;">Health</a>
@@ -19,17 +20,24 @@
 
 	<h2>Lorem Ipsum Dolor Sit Amet.</h2>
 
-<p>How do you feel today?</p>	
 
-<!--TODO: insert a text entry box -->
+<p>How do you feel today? <input type="text"><br> </p>
 
-<p>How would you like to feel? (choose all that apply)</p>
 
-<!--TODO: insert a form with multiple options-->
+<p>How would you like to feel? (choose all that apply)
+	<select multiple="multiple">
+		<option>Comfortably numb</option>
+		<option>Grumpy as poop, you jerk</option>
+		<option>Happy like I'm on controlled substances</option>
+		<option>Normal. Absolutely Normal.</option>
+	</select>
+</p>
+
+<button type="button">Feel Me!</button>
 
 <h3>Current Progress in Life</h3>	
 <p>Mediocre. You should really enjoy life more.</p>
 
-<img src="assets/imgs/dont_panic.jpg">
+<img src="assets/imgs/dont_panic.jpg" alt ="Don't Panic icon from the Hitchhiker's Guide to the Galaxy">
 </body>
 </html>
