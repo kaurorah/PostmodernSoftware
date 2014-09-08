@@ -1,3 +1,4 @@
+
 h1{
 	font-family: arial
 }
@@ -6,7 +7,6 @@ body{
 	background-color: DarkGrey;
     border: 1px solid black;
     font-family: arial;
-
 }
 
 h2{
@@ -21,6 +21,7 @@ h2{
 	padding-left: 10px;
 }
 
+/*Life Progress box floated right*/
 .LifeProgress{
 	background-color:#CDCDFF;
 	padding: 5px;
@@ -28,15 +29,16 @@ h2{
 	float:right
 }
 
+/*copywrite bar at the bottom*/
 .footer{
 	text-align: center;
 	border:1px;
 	background-color: #D9D9D1;
 	padding:15px;
 
-
 }
 
+/*Title and banner at the top of the page*/
 .TopHeader{
 	border:1px solid black;
 	background-color: #E1DFDD;
@@ -49,20 +51,13 @@ h2{
 	font-family: arial;
 }
 
+/*Horizontal black menu bar*/
 .NavigationBar{
 	display:block;
 	border:1px;
 	background-color: black;
 }
-
-a{
-	font-family: arial;
-	color:white ;
-    text-align: center;
-    padding: 4px;
-    text-decoration: none;
-}
-
+/*Formatting for menu bar*/
 li {
     display: inline;
     font-family: arial;
@@ -77,10 +72,20 @@ ul{
     padding: 10px;
 }
 
-
+/*Formatting for links*/
 a:hover {
   color: #FF6633 ;
 }
+
+a{
+	font-family: arial;
+	color:white ;
+    text-align: center;
+    padding: 4px;
+    text-decoration: none;
+}
+
+/*Formatting/alignment propeties for form items*/
 form{
 	overflow: hidden;
 }
@@ -94,11 +99,16 @@ input {
   display: inline-block;
   float: left;
 }
+
 select{
 	display: inline-block;
 	float:left;
 }
 
-button{
+/*Image needs to float right underneath Life Progress box*/
+img{
+	/*display: inline-block;
+	float:right;
+	vertical-align: middle;*/
 
 }
