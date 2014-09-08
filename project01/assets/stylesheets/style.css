@@ -2,6 +2,7 @@ h1{
 	font-family: arial
 }
 body{
+	display: block;
 	background-color: DarkGrey;
     border: 1px solid black;
     font-family: arial;
@@ -13,15 +14,23 @@ h2{
 }
 
 
-img{
+/*img{
 	float: right;
 	border: 5px solid black;
-
 }
-.LifeProgress{
-
+*/
+.MainContent{
 	display: block;
-	border:1px
+	padding-top:10px;
+	background-color: #F4F4F3;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.LifeProgress{
+	background-color:#CDCDFF;
+	padding: 5px;
+	display: block;
 	float:right
 }
 
@@ -79,4 +88,26 @@ ul{
 
 a:hover {
   color: #FF6633 ;
+}
+form{
+	overflow: hidden;
+}
+label{
+    display: inline-block;
+    float: left;
+    clear: left;
+    width: 250px;
+    /*text-align: right;*/
+}
+input {
+  display: inline-block;
+  float: left;
+}
+select{
+	display: inline-block;
+	float:left;
+}
+
+button{
+
 }
