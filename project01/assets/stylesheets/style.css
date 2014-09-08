@@ -87,7 +87,6 @@ select{
 
 /*Life Progress box floated right*/
 .LifeProgress{
-	clear:right;
 	display: block;
 	background-color:#CDCDFF;
 	padding: 5px;
@@ -95,9 +94,12 @@ select{
 }
 
 /*Image needs to float right underneath Life Progress box*/
-img{
-	clear: right;
+img.adams{
 	float: right;
+}
+
+br.clear{
+	clear:both;
 }
 
 /*copywrite bar at the bottom*/
