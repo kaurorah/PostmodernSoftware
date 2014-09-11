@@ -1,0 +1,104 @@
+
+<!doctype html>
+<html>
+<head>
+<title>CRCP Project 2.1 Boilerplate</title>
+<script type="text/javascript" language="javascript">
+// A form validation function template.
+function validateForm(event) {
+  alert('Form is being submitted. Delete this line from the js.');
+  event.preventDefault(); // don't submit the form, because we're going to work with data on the client only.
+  var formIsValid = true;
+  // TODO
+  // Inspect the values of each input element to make sure they are not blank.
+  // If any of the fields are blank, formIsValid should be set to false.
+  // AND the error message node in the dom should describe the errors.
+  // eg: First name is blank. Favorite food is blank.
+  if (!formIsValid) {
+    // TODO update the error div and display it.
+  } else {
+    // TODO update the h1 span contents. Hint: see element.innerHTML
+  }
+}
+
+// "Only once the document is loaded, execute the following function."
+window.onload = function(event) {
+  alert('Window (and document) has loaded. Delete this line from the js.');
+  // Get the form element, so we can manipulate it.
+  var formNode = document.getElementById("myForm");
+  // When the form is submitted, execute the following function.
+  formNode.addEventListener("submit", validateForm, false);
+  // Notice how the identifier `validateForm` itself is passed, not the
+  // return value from calling the `validateForm` function.
+  // eg. validateForm vs validateForm().
+  // We are literally passing the `addEventListener` method a function.
+  // In JavaScript, and other functional langs,
+  // functions are "first-class citizens".
+}
+</script>
+<style>
+  body {
+    font-family: helvetica, arial, sans-serif;
+    padding: 2em;
+  }
+  .errors {
+    border: 1px solid #900;
+    background-color: #FEE;
+    font-family: helvetica, arial, sans-serif;
+  }
+  .errors h2 {
+    font-size: 1em;
+    color: #900;
+    margin: 0px;
+  }
+  label {
+    display: inline-block;
+    text-align: right;
+    width: 120px;
+  }
+  hr.subtle {
+    margin: 20px 0px 80px 0px;
+    /* http://css-tricks.com/examples/hrs/ */
+    border: 0;
+    height: 1px;
+    background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image: -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image: -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+    background-image: -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+  }
+</style>
+</head>
+<body>
+
+<h1>My name is <span id="fullName">_______</span> and I like to eat <span id="favoriteFood">_______</span>.</h1>
+<div class="errors" style="display: none;">
+  <h2>Error</h2>
+  <p class="error"></p>
+</div>
+<form name="myForm" id="myForm" action="http://google.com" method="GET">
+  <label for="fname">First Name</label>
+  <input type="text" name="fname" />
+  <br />
+  <label for="lname">Last Name</label>
+  <input type="text" name="lname" />
+  <br />
+  <label for="fav_food">Favorite Food</label>
+  <input type="text" name="fav_food" />
+  <br />
+  <label for="submit"></label>
+  <input name="submit" type="submit" />
+</form>
+<hr class="subtle" />
+<p><strong>Take a look at the source of this document</strong>, be sure to notice the comments. I recommend deleting the comments once you read them, because they get in the way of the code.</p>
+<h3>Goal</h3>
+<p>If any form field is empty, your program should make the div.error box appear. Update the div.error p.errors node with an appropriate error message. (eg. "First name is blank. Last name is blank." etc.)</p>
+<p>If all the fields are complete, your program should replace the blanks in the big header with the full name and favorite food, as specified by the values in the input fields.</p>
+<p>Stick with <a href="https://developer.mozilla.org/en-US/docs/Web/API/document">pure JavaScript</a> and do not use a library.</p>
+<h3>Notes &amp; Tips</h3>
+<p>You will notice that the form does not submit anywhere, and this is intentional. The event object's <code>preventDefault()</code> method causes this. In class, I had been using <code>return false</code>, which I now realize is outdated (this used to be the standard approach).
+<p>I have extracted the validateForm function out of the inline location shown in class. This would have been the next step, if I had not run us out of time.</p>
+<p>You merely need to complete the implementation of <code>validateForm</code>. Note, however, that this really should be split into multiple functions: one that validates the form, and a second that updates the display. Bonus points if you use multiple functions.</p>
+<p>HTML documents let you <code>getElementById</code>, <code>span</code> elements let you manipulate their <code>innerHTML</code>, and <code>input</code> elements have a <code>value</code> property.</p>
+<p><strong>Do not change the HTML body</strong>. It is intended to coerce you into exploring specific JS methods.</p>
+</body>
+</html>
