@@ -6,15 +6,29 @@
 <script type="text/javascript" language="javascript">
 // A form validation function template.
 function validateForm(event) {
-  alert('Form is being submitted. Delete this line from the js.');
-  event.preventDefault(); // don't submit the form, because we're going to work with data on the client only.
+  event.preventDefault(); 
   var formIsValid = true;
   // TODO
   // Inspect the values of each input element to make sure they are not blank.
   // If any of the fields are blank, formIsValid should be set to false.
   // AND the error message node in the dom should describe the errors.
   // eg: First name is blank. Favorite food is blank.
+
+  var firstNameField = document.forms["myForm"]["fname"].value;
+  var lastNameField = document.forms["myForm"]["lname"].value;
+  var favFood =  document.forms["myForm"]["fav_food"].value;
+    if (firstNameField == null || firstNameField == "") {
+      formIsValid= false;
+    }
+  if (lastNameField == null || lastNameField == "") {
+      formIsValid= false;
+    }
+
+ if (favFood == null || favFood == "") {
+      formIsValid= false;
+    }
   if (!formIsValid) {
+
     // TODO update the error div and display it.
   } else {
     // TODO update the h1 span contents. Hint: see element.innerHTML
@@ -23,7 +37,7 @@ function validateForm(event) {
 
 // "Only once the document is loaded, execute the following function."
 window.onload = function(event) {
-  alert('Window (and document) has loaded. Delete this line from the js.');
+  //alert('Window (and document) has loaded. Delete this line from the js.');
   // Get the form element, so we can manipulate it.
   var formNode = document.getElementById("myForm");
   // When the form is submitted, execute the following function.
