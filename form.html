@@ -8,36 +8,36 @@
 function validateForm(event) {
   event.preventDefault(); 
   var formIsValid = true;
-  // TODO
-  // Inspect the values of each input element to make sure they are not blank.
-  // If any of the fields are blank, formIsValid should be set to false.
-  // AND the error message node in the dom should describe the errors.
-  // eg: First name is blank. Favorite food is blank.
-
   var firstNameField = document.forms["myForm"]["fname"].value;
   var lastNameField = document.forms["myForm"]["lname"].value;
   var favFood =  document.forms["myForm"]["fav_food"].value;
+
+
     if (firstNameField == null || firstNameField == "") {
       formIsValid= false;
+      document.getElementById("error").innerHTML='First name is blank.'
     }
   if (lastNameField == null || lastNameField == "") {
       formIsValid= false;
+      document.getElementById("error").innerHTML='Last name is blank.'
     }
-
  if (favFood == null || favFood == "") {
       formIsValid= false;
+      document.getElementById("error").innerHTML='Favorite food is blank.'
+
     }
   if (!formIsValid) {
-
-    // TODO update the error div and display it.
+    //Note: I had trouble using getElementbyClassName to display the div class errors. I changed it the div to id errors but i'm not sure why i couldn't access the div while it was classified as a class
+    document.getElementById("errors").style.display = "block";
   } else {
-    // TODO update the h1 span contents. Hint: see element.innerHTML
+        document.getElementById("fullName").innerHTML= firstNameField+ " " +lastNameField;
+        document.getElementById("favoriteFood").innerHTML= favFood;
+
   }
 }
 
 // "Only once the document is loaded, execute the following function."
 window.onload = function(event) {
-  //alert('Window (and document) has loaded. Delete this line from the js.');
   // Get the form element, so we can manipulate it.
   var formNode = document.getElementById("myForm");
   // When the form is submitted, execute the following function.
@@ -55,12 +55,12 @@ window.onload = function(event) {
     font-family: helvetica, arial, sans-serif;
     padding: 2em;
   }
-  .errors {
+  #errors {
     border: 1px solid #900;
     background-color: #FEE;
     font-family: helvetica, arial, sans-serif;
   }
-  .errors h2 {
+  #errors h2 {
     font-size: 1em;
     color: #900;
     margin: 0px;
@@ -85,9 +85,9 @@ window.onload = function(event) {
 <body>
 
 <h1>My name is <span id="fullName">_______</span> and I like to eat <span id="favoriteFood">_______</span>.</h1>
-<div class="errors" style="display: none;">
+<div id="errors" style="display: none;">
   <h2>Error</h2>
-  <p class="error"></p>
+  <p id="error"></p>
 </div>
 <form name="myForm" id="myForm" action="http://google.com" method="GET">
   <label for="fname">First Name</label>
