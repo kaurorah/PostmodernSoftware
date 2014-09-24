@@ -1,8 +1,13 @@
 require 'rack'
 
+
 class HelloWorld
+
+
   def call(env)
-    [200, {"Content-Type" => "text/plain"}, ["Hello from Rack!"]]
+  	file = File.open("index.html", "r")
+	contents=file.read 
+    [200, {"Content-Type" => "text/html"}, [contents]]
   end
 end
 
