@@ -1,5 +1,10 @@
 require 'rack'
 
+# use an album class
+
+
+
+
 class HelloWorld
 
 
@@ -26,24 +31,27 @@ class HelloWorld
 		# File.open("top_100_albums.txt", "rb") { |file| response.write(file.read) }
 		# read in txt file as data
 		# File.open("top_100_albums.txt").readlines.each do |line|
-  # 		puts line
+  	# 		puts line
 		# end
 
+		# need to add rank element in array 
 		result = []
+		# add doctype and extra html
 		response.write("<table>\n <tr>\n <th>Rank</th>\n <th>Album</th>\n <th>Year</th>\n </tr>\n")
-
 		File.open("top_100_albums.txt","r") do |handle|
 		  handle.each_line do |line|
 		    result << line.split(", ")
-		  end
-		  
+		  end  
 		end
-		100.times do |x|
-			 response.write(" <tr>\n <td>\ #{x+1}\ </td> <td> \ #{result[x][0]}\ </td>\n <td>\ #{result[x][1]}\ </td>\n </tr>\n")
+
+		result.each_with_index do |elem, i|
+			# if(x==request.get("id")
+			# 	response.write(" <tr class = "highlighted">\n <td>\ #{i+1}\ </td> <td> \ #{elem[0]}\ </td>\n <td>\ #{elem[1]}\ </td>\n </tr>\n")
+			# else
+				response.write(" <tr>\n <td>\ #{i+1}\ </td> <td> \ #{elem[0]}\ </td>\n <td>\ #{elem[1]}\ </td>\n </tr>\n")
 		end
 
 		response.write("</table>\n")
-
 		response.finish
 	end
 
@@ -53,3 +61,14 @@ class HelloWorld
 end
 
 Rack::Handler::WEBrick.run HelloWorld.new, :Port => 8080
+
+
+
+
+
+
+
+
+
+
+
