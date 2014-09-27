@@ -1,7 +1,16 @@
 require 'rack'
 
 # use an album class
+class Album
+			attr_accessor :title, :year, :rank 
 
+	def initialize()
+		@title = title
+		@year = year
+		@rank = rank
+	end
+
+end
 
 
 
@@ -31,7 +40,7 @@ class HelloWorld
 		# File.open("top_100_albums.txt", "rb") { |file| response.write(file.read) }
 		# read in txt file as data
 		# File.open("top_100_albums.txt").readlines.each do |line|
-  	# 		puts line
+  		# 		puts line
 		# end
 
 		# need to add rank element in array 
@@ -40,15 +49,26 @@ class HelloWorld
 		response.write("<table>\n <tr>\n <th>Rank</th>\n <th>Album</th>\n <th>Year</th>\n </tr>\n")
 		File.open("top_100_albums.txt","r") do |handle|
 		  handle.each_line do |line|
-		    result << line.split(", ")
+		    buffer =line.split(", ")
+
+		   # result << Album.new(buffer[0], buffer[1], handle.lineno)
+
+			  a = Album.new
+			  a.title = buffer[0]
+			  a.year = buffer[1]
+			  a.rank = handle.lineno
+			  result.push(a)
+
 		  end  
+
 		end
 
+print result
 		result.each_with_index do |elem, i|
 			# if(x==request.get("id")
 			# 	response.write(" <tr class = "highlighted">\n <td>\ #{i+1}\ </td> <td> \ #{elem[0]}\ </td>\n <td>\ #{elem[1]}\ </td>\n </tr>\n")
 			# else
-				response.write(" <tr>\n <td>\ #{i+1}\ </td> <td> \ #{elem[0]}\ </td>\n <td>\ #{elem[1]}\ </td>\n </tr>\n")
+				response.write(" <tr>\n <td>\ #{elem.rank}\ </td> <td> \ #{elem.title}\ </td>\n <td>\ #{elem.year}\ </td>\n </tr>\n")
 		end
 
 		response.write("</table>\n")
