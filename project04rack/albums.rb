@@ -1,3 +1,5 @@
+# TODO: definitely find a better way of dealing with the html and css than in the ruby file
+
 require 'rack'
 
 class Album
@@ -7,11 +9,9 @@ class Album
 		@year = year
 		@rank = rank
 	end
-
 end
 
 class HelloWorld
-
 
  	def call(env)
   	request= Rack::Request.new(env)
@@ -30,9 +30,10 @@ class HelloWorld
 		response.finish
 	end
 
+
 	def render_list(request)
   	# Grab info from URL
-  	rank_id = request.params["rank_highlight"]
+  	rank_id = request.params["rank_highlight"].to_i
   	sort_method = request.params["sort_by"]
 		
 		response = Rack::Response.new
@@ -41,7 +42,7 @@ class HelloWorld
 		result = []
 		
 		# Write some html TODO:load this separately, not in ruby code
-		response.write("<!doctype html>\n <html>\n <head>\n </head>\n <body>\n");
+		response.write("<!doctype html>\n <html>\n <head>\n	<style type=\"text/css\"> .highlighted {background: yellow;}</style> </head>\n <body>\n");
 		response.write("<table>\n <tr>\n <th>Rank</th>\n <th>Album</th>\n <th>Year</th>\n </tr>\n")
 		
 		# Open txt file and create Albums array
@@ -64,15 +65,15 @@ class HelloWorld
 
 		# Iterate through results array to display the correct table of albums
 		result.each_with_index do |elem, i|
-			if(elem.rank==rank_id) then response.write( "<tr class='highlighted'>\n <td>\ #{elem.rank}\ </td> <td> \ #{elem.title}\ </td>\n <td>\ #{elem.year}\ </td>\n </tr>\n")
+			if(elem.rank==rank_id) then response.write( "<tr class=\"highlighted\">\n <td>\ #{elem.rank}\ </td> <td> \ #{elem.title}\ </td>\n <td>\ #{elem.year}\ </td>\n </tr>\n")
 			else response.write(" <tr>\n <td>\ #{elem.rank}\ </td> <td> \ #{elem.title}\ </td>\n <td>\ #{elem.year}\ </td>\n </tr>\n")
 			end
 		end
-
 		response.write("</table>\n </body>\n</html>\n")
 		response.finish
 	end
 
+	# sort functions 
 	def sort_by_rank(albums)
 		 albums.sort! { |a,b| a.rank <=> b.rank }
 	end
