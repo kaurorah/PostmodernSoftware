@@ -10,8 +10,6 @@ class Album
 
 end
 
-
-
 class HelloWorld
 
 
@@ -33,6 +31,12 @@ class HelloWorld
 	end
 
 	def render_list(request)
+  	rank_id = request.params["rank_highlight"]
+  	sort_method = request.params["sort_by"]
+
+		puts rank_id
+		puts sort_method
+		
 		response = Rack::Response.new
 		result = []
 		#TODO: add doctype and extra html
