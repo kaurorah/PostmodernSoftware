@@ -5,15 +5,17 @@
 </head>
 <body>
 	<h1>Rolling Stone's Top 100 Albums of All Time</h1>
-	<form action="">
-	<select name="sort_by">
-		<option value="">Sort By</option>
-		<option value="rank" selected>Rank</option>
-		<option value="name">Name</option>
-		<option value="year">Year</option>
-	</select>
-	</form>
+	
+	<form action="localhost:8080/list" method="get" target="_blank">
+	
+		<select name="sort_by">
+			<option value="">Sort By</option>
+			<option value="rank" selected>Rank</option>
+			<option value="name">Name</option>
+			<option value="year">Year</option>
+		</select><br>
 
-	<form action="">
-	<select name="rank_highlight">
-	<option value="">Select A Rank To Highlight</option>
+
+		<select name="rank_highlight">
+			<option value="">Select A Rank To Highlight</option>
+		
