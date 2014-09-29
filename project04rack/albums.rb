@@ -57,11 +57,8 @@ class HelloWorld
 		  end  
 		end
 
-		# Sort the results array based on what the form returned
-		if sort_method == "rank" then sort_by_rank(result)
-		elsif sort_method == "year"	then sort_by_year(result)
-		elsif sort_method == "name"	then sort_by_title(result)
-		end 
+		# Sort the results array based on what the form returned		
+		sort_by(result, sort_method)
 
 		# Iterate through results array to display the correct table of albums
 		result.each_with_index do |elem, i|
@@ -74,16 +71,8 @@ class HelloWorld
 	end
 
 	# sort functions 
-	def sort_by_rank(albums)
-		 albums.sort! { |a,b| a.rank <=> b.rank }
-	end
-
-	def sort_by_year(albums)
-		albums.sort! { |a,b| a.year <=> b.year }
-	end
-
-	def sort_by_title(albums)
-		albums.sort! { |a,b| a.title <=> b.title }
+	def sort_by(collection, attr)
+		collection.sort! { |a,b| a.send(attr) <=> b.send(attr)}
 	end
 
 	def render_404
