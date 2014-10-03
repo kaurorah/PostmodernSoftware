@@ -1,14 +1,15 @@
 # TODO: definitely find a better way of dealing with the html and css than in the ruby file
 
 require 'rack'
+require 'sqlite3'
 
 class Album
 	attr_accessor :title, :year, :rank 
-	def initialize()
-		@title = title
-		@year = year
-		@rank = rank
-	end
+	# def initialize(title, year, rank)
+	# 	@title = title
+	# 	@year = year
+	# 	@rank = rank
+	# end
 end
 
 class HelloWorld
@@ -38,39 +39,40 @@ class HelloWorld
 		
 		response = Rack::Response.new
 		
-		# create an array to load Album objects into
+		# Create an array to load Album objects into
 		result = []
 		
-		# Write some html TODO:load this separately, not in ruby code
 		response.write("<!doctype html>\n <html>\n <head>\n	<style type=\"text/css\"> .highlighted {background: yellow;}</style> </head>\n <body>\n");
-		response.write("<table>\n <tr>\n <th>Rank</th>\n <th>Album</th>\n <th>Year</th>\n </tr>\n")
+		response.write("<table>\n <tr>\n 	<th>Rank</th>\n <th>Album</th>\n <th>Year</th>\n </tr>\n")
 		
-		# Open txt file and create Albums array
-		File.open("top_100_albums.txt","r") do |handle|
-		  handle.each_line do |line|
-		    buffer =line.split(", ")
-			  a = Album.new
-			  a.title = buffer[0]
-			  a.year = buffer[1]
-			  a.rank = handle.lineno
-			  result.push(a)
-		  end  
+		# Instantiate a new database object
+		albums_database = SQLite3::Database.new("albums.sqlite3.db")
+		
+		# Load database into an array
+		albums_array = albums_database.execute("SELECT * FROM albums")
+
+		#Iterate through array, create Album objects from database, push to results array
+		albums_array.each do |id, title, year, rank|
+			 a = Album.new
+			 a.title=title
+			 a.year=year			 
+			 a.rank=rank
+			 result.push(a)
 		end
-
+		
 		# Sort the results array based on what the form returned		
-		sort_by(result, sort_method)
+		 sort_by(result, sort_method)
 
-		# Iterate through results array to display the correct table of albums
+		# # Iterate through results array to display the correct table of albums
 		result.each_with_index do |elem, i|
 			if(elem.rank==rank_id) then response.write( "<tr class=\"highlighted\">\n <td>\ #{elem.rank}\ </td> <td> \ #{elem.title}\ </td>\n <td>\ #{elem.year}\ </td>\n </tr>\n")
-			else response.write(" <tr>\n <td>\ #{elem.rank}\ </td> <td> \ #{elem.title}\ </td>\n <td>\ #{elem.year}\ </td>\n </tr>\n")
+			else response.write(" <tr>\n 	<td>\ #{elem.rank}\ </td> <td> \ #{elem.title}\ </td>\n 	<td>\ #{elem.year}\ </td>\n </tr>\n")
 			end
 		end
 		response.write("</table>\n </body>\n</html>\n")
 		response.finish
 	end
 
-	# sort functions 
 	def sort_by(collection, attr)
 		collection.sort! { |a,b| a.send(attr) <=> b.send(attr)}
 	end
