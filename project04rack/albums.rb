@@ -1,15 +1,8 @@
-# TODO: definitely find a better way of dealing with the html and css than in the ruby file
-
 require 'rack'
 require 'sqlite3'
 
 class Album
 	attr_accessor :title, :year, :rank 
-	# def initialize(title, year, rank)
-	# 	@title = title
-	# 	@year = year
-	# 	@rank = rank
-	# end
 end
 
 class HelloWorld
@@ -25,9 +18,7 @@ class HelloWorld
 
 	def render_form(request)
 		response=Rack::Response.new
-		File.open("form_top.html", "rb") { |form| response.write(form.read)  }
-		100.times { |i| response.write("<option value=\"#{i+1}\">#{i+1}</option>\n")}
-		File.open("form_bottom.html", "rb") { |form| response.write(form.read)  }
+		response.write(ERB.new(File.read("form.html.erb")).result(binding))
 		response.finish
 	end
 
@@ -41,9 +32,6 @@ class HelloWorld
 		
 		# Create an array to load Album objects into
 		result = []
-		
-		response.write("<!doctype html>\n <html>\n <head>\n	<style type=\"text/css\"> .highlighted {background: yellow;}</style> </head>\n <body>\n");
-		response.write("<table>\n <tr>\n 	<th>Rank</th>\n <th>Album</th>\n <th>Year</th>\n </tr>\n")
 		
 		# Instantiate a new database object
 		albums_database = SQLite3::Database.new("albums.sqlite3.db")
@@ -61,15 +49,11 @@ class HelloWorld
 		end
 		
 		# Sort the results array based on what the form returned		
-		 sort_by(result, sort_method)
+		sort_by(result, sort_method)
+		
+		# Print out list through ERB file
+		response.write(ERB.new(File.read("list.html.erb")).result(binding))
 
-		# # Iterate through results array to display the correct table of albums
-		result.each_with_index do |elem, i|
-			if(elem.rank==rank_id) then response.write( "<tr class=\"highlighted\">\n <td>\ #{elem.rank}\ </td> <td> \ #{elem.title}\ </td>\n <td>\ #{elem.year}\ </td>\n </tr>\n")
-			else response.write(" <tr>\n 	<td>\ #{elem.rank}\ </td> <td> \ #{elem.title}\ </td>\n 	<td>\ #{elem.year}\ </td>\n </tr>\n")
-			end
-		end
-		response.write("</table>\n </body>\n</html>\n")
 		response.finish
 	end
 
