@@ -1,0 +1,22 @@
+	<table>
+		<tr>
+		 	<th>Rank</th>
+		 	<th>Album</th>
+		 	<th>Year</th>
+		 </tr>
+		<% result.each do |album| %>
+			<% if(album.rank==rank_id) %> 
+				<tr class="highlighted">	
+			 		<td> <%=album.rank %> </td>
+			 		<td> <%=album.title %> </td>
+			 		<td> <%=album.year %> </td>
+			 	</tr>
+			<% else %>
+				<tr>	
+			 		<td> <%=album.rank %> </td>
+			 		<td> <%=album.title %> </td>
+			 		<td> <%=album.year %> </td>
+			 	</tr>
+			 	<% end %>
+	 	<% end %>
+	 </table> 

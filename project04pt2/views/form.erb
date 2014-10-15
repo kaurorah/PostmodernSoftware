@@ -1,0 +1,16 @@
+
+	<form action="/list" method="get">
+		<select name="sort_by">
+			<option value="">Sort By</option>
+			<option value="rank" selected>Rank</option>
+			<option value="name">Name</option>
+			<option value="year">Year</option>
+		</select><br>
+		<select name="rank_highlight">
+			<option value="">Select A Rank To Highlight</option>
+			<%  (1..100).each do |i| %>
+			<option value="<%= i %>"> <%= i %> </option>
+			<% end %> 	
+		</select><br>
+		<input type="submit" value="Submit">
+	</form>
