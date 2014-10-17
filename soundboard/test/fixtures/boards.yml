@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  transcript: MyString
+  length: 1
+  audiofile: 
+  recording_date: 2014-10-17 10:42:09
+
+two:
+  title: MyString
+  transcript: MyString
+  length: 1
+  audiofile: 
+  recording_date: 2014-10-17 10:42:09
