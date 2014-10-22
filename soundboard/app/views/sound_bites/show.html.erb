@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @sound_bite.title %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <% @sound_bite.comments.each do |comment|  %>
+  <% comment.body %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Transcript:</strong>
+  <%= @sound_bite.transcript %>
+</p>
+
+<p>
+  <strong>Length:</strong>
+  <%= @sound_bite.length %>
+</p>
+
+<p>
+  <strong>Audiofile:</strong>
+  <%= @sound_bite.audiofile %>
+</p>
+
+<p>
+  <strong>Recording date:</strong>
+  <%= @sound_bite.recording_date %>
+</p>
+
+<p>
+  <strong>Create a comment:</strong>
+  <%= @sound_bite.comments do |comment| %>
+  <div class="field">
+    <%= c.label :body %><br>
+    <%= f.text_field :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+</p>
+<%= link_to 'Edit', edit_sound_bite_path(@sound_bite) %> |
+<%= link_to 'Back', sound_bites_path %>

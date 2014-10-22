@@ -1,0 +1,37 @@
+<%= form_for(@sound_bite) do |f| %>
+  <% if @sound_bite.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sound_bite.errors.count, "error") %> prohibited this sound_bite from being saved:</h2>
+
+      <ul>
+      <% @sound_bite.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :transcript %><br>
+    <%= f.text_field :transcript %>
+  </div>
+  <div class="field">
+    <%= f.label :length %><br>
+    <%= f.number_field :length %>
+  </div>
+  <div class="field">
+    <%= f.label :audiofile %><br>
+    <%= f.text_field :audiofile %>
+  </div>
+  <div class="field">
+    <%= f.label :recording_date %><br>
+    <%= f.datetime_select :recording_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

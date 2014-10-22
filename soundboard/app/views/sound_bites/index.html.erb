@@ -1,0 +1,40 @@
+<h1>Listing sound_bites</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Transcript</th>
+      <th>Length</th>
+      <th>Audiofile</th>
+      <th>Recording date</th>
+      <th>Comments</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sound_bites.each do |sound_bite| %>
+      <tr>
+        <td><%= sound_bite.title %></td>
+        <td><%= sound_bite.transcript %></td>
+        <td><%= sound_bite.length %></td>
+        <td><%= sound_bite.audiofile %></td>
+        <td><%= sound_bite.recording_date %></td>
+        <td> <% sound_bite.comments.length %> </td>
+
+        <td><%= link_to 'Show', sound_bite %></td>
+        <td><%= link_to 'Edit', edit_sound_bite_path(sound_bite) %></td>
+        <td><%= link_to 'Destroy', sound_bite, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      
+    <% end %>
+
+       
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sound bite', new_sound_bite_path %>
