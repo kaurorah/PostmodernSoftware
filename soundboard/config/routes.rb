@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+
+  resources :sound_bites
+
   resources :boards
 
   # The priority is based upon order of creation: first created -> highest priority.
