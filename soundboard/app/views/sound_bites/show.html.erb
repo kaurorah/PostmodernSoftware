@@ -36,13 +36,13 @@
   <strong>Create a comment:</strong>
   <%= @sound_bite.comments do |comment| %>
   <div class="field">
-    <%= c.label :body %><br>
-    <%= f.text_field :body %>
+    <%= comment.label :body %><br>
+    <%= comment.text_field :body %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= comment.submit %>
   </div>
-<% end %>
+  <% end %>
 </p>
 <%= link_to 'Edit', edit_sound_bite_path(@sound_bite) %> |
 <%= link_to 'Back', sound_bites_path %>

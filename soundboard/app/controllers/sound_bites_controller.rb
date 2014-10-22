@@ -7,6 +7,11 @@ class SoundBitesController < ApplicationController
     @sound_bites = SoundBite.all
   end
 
+  def comment
+   Post.find(params[:id]).comments.create(params[:comment])
+   redirect_to :action => "show", :id => params[:id]
+end
+
   # GET /sound_bites/1
   # GET /sound_bites/1.json
   def show
